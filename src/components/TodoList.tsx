@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
-import { compareDates, titleIncludesFilter } from '@/utils/utils';
-import TodoItem from '@/components/TodoItem';
 import type { Todo } from '@/types';
-import { dummyTodos } from '@/constants';
+import { useTodosStore } from '@/store/todos';
+import { titleIncludesFilter } from '@/utils/filter';
+import { compareDates } from '@/utils/dates';
+import TodoItem from '@/components/TodoItem';
 
 interface Props {
   filter: string;
@@ -16,9 +17,11 @@ const todosToRender = (todos: Todo[], filter: string): ReactNode[] => {
 };
 
 export default function TodoList({ filter }: Props): JSX.Element {
+  const todos = useTodosStore((state) => state.todos);
+
   return (
-    <ul className="flex flex-col flex-wrap justify-center content-center">
-      {todosToRender(dummyTodos, filter)}
+    <ul className="flex flex-col flex-wrap content-center justify-center">
+      {todosToRender(todos, filter)}
     </ul>
   );
 }

@@ -2,8 +2,9 @@ export const getFormattedDate = (date: Date) => {
   return date.toISOString().split('T')[0];
 };
 
-export const titleIncludesFilter = (title: string, filter: string): boolean => {
-  return title.toLowerCase().includes(filter.toLowerCase());
+export const createDate = (date: string) => {
+  const [year, month, day] = date.split('-');
+  return new Date(Number(year), Number(month) - 1, Number(day) + 1);
 };
 
 export const compareDates = (date1: Date, date2: Date): number => {
