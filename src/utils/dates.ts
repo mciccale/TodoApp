@@ -7,9 +7,9 @@ export const createDate = (date: string) => {
   return new Date(Number(year), Number(month) - 1, Number(day) + 1);
 };
 
-export const compareDates = (date1: Date, date2: Date): number => {
-  const [year1, month1, day1] = getFormattedDate(date1).split('-');
-  const [year2, month2, day2] = getFormattedDate(date2).split('-');
+export const compareDates = (date1: string, date2: string): number => {
+  const [year1, month1, day1] = date1.split('-');
+  const [year2, month2, day2] = date2.split('-');
 
   if (year1 > year2) return 1;
   if (year1 < year2) return -1;

@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Header({ title }: Props) {
-  return <h1 className="text-6xl text-center p-10">{title}</h1>;
+  return <h1 className="py-5 pb-7 text-5xl font-bold">{title}</h1>;
 }
