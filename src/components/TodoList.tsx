@@ -6,7 +6,7 @@ import TodoItem from '@/components/TodoItem';
 
 const todosToRender = (todos: TodoWithId[]): ReactNode[] => {
   return todos
-    .toSorted((todo1, todo2) => compareDates(todo1.dueDate, todo2.dueDate))
+    .sort((todo1, todo2) => compareDates(todo1.dueDate, todo2.dueDate))
     .map((todo) => <TodoItem key={todo.id} todo={todo} />);
 };
 
