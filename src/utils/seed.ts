@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import TodoSchema from '../schemas/todo';
+import TodoSchema from '@/schemas/todo';
 import dbConnect from '@/lib/dbConnect';
 
 const dummyTodos = [

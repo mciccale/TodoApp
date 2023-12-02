@@ -1,9 +1,9 @@
 'use server';
 
-import dbConnect from '@/lib/dbConnect';
-import { Todo, TodoWithId } from '@/types';
-import TodoSchema from '@/schemas/todo';
 import { revalidatePath } from 'next/cache';
+import { Todo, TodoWithId } from '@/types';
+import dbConnect from '@/lib/dbConnect';
+import TodoSchema from '@/schemas/todo';
 
 export const fetchTodos = async (): Promise<TodoWithId[]> => {
   try {
@@ -38,19 +38,19 @@ export const addTodoFromForm = async (
   }
 };
 
-export const addTodo = async (todo: Todo): Promise<undefined> => {
+export const removeTodo = async (todoId: string): Promise<undefined> => {
   try {
     await dbConnect();
-    await new TodoSchema(todo).save();
+    await TodoSchema.findByIdAndDelete(todoId);
   } catch (e) {
     console.error(e);
   }
 };
 
-export const removeTodo = async (todoId: string): Promise<undefined> => {
+const addTodo = async (todo: Todo): Promise<undefined> => {
   try {
     await dbConnect();
-    await TodoSchema.findByIdAndDelete(todoId);
+    await new TodoSchema(todo).save();
   } catch (e) {
     console.error(e);
   }

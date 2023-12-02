@@ -1,7 +1,8 @@
 'use client';
 
-import { addTodoFromForm } from '@/actions/todos';
 import { useRef } from 'react';
+import { addTodoFromForm } from '@/actions/todos';
+import Button from '@/components/Button';
 
 export default function TodoForm() {
   const ref = useRef<HTMLFormElement>(null);
@@ -33,12 +34,7 @@ export default function TodoForm() {
           type="date"
           name="dueDate"
         />
-        <button
-          className="ml-2 h-20 w-20 rounded-full bg-green-300 text-6xl hover:bg-green-200"
-          type="submit"
-        >
-          +
-        </button>
+        <Button />
       </form>
     </div>
   );

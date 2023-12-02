@@ -1,5 +1,5 @@
-import { Todo } from '@/types';
 import mongoose from 'mongoose';
+import { Todo } from '@/types';
 
 const todoSchema = new mongoose.Schema<Todo>({
   title: {
@@ -24,4 +24,7 @@ todoSchema.set('toObject', {
   },
 });
 
-export default mongoose.models.Todo || mongoose.model<Todo>('Todo', todoSchema);
+const TodoSchema =
+  mongoose.models.Todo || mongoose.model<Todo>('Todo', todoSchema);
+
+export default TodoSchema;
