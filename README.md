@@ -2,6 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+First, ensure you have a EVN variable
+
+```MONGODB_URI```
+
+Set with a database to use the application.
+
+
 First, run the development server:
 
 ```bash
