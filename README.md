@@ -15,9 +15,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Deployment
-
-The push to the `main` branch will trigger the deployment of the app here:
-
-[https://todo-app-three-gray.vercel.app](https://todo-app-three-gray.vercel.app)
