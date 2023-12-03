@@ -1,8 +1,11 @@
 import { ReactNode } from 'react';
 import { TodoWithId } from '@/types';
 import { compareDates } from '@/utils/dates';
-import { fetchTodos } from '@/actions/todos';
 import TodoItem from '@/components/TodoItem';
+
+interface Props {
+  todos: TodoWithId[];
+}
 
 const todosToRender = (todos: TodoWithId[]): ReactNode[] => {
   return todos
@@ -10,11 +13,12 @@ const todosToRender = (todos: TodoWithId[]): ReactNode[] => {
     .map((todo) => <TodoItem key={todo.id} todo={todo} />);
 };
 
-export default async function TodoList(): Promise<JSX.Element> {
-  const todos = await fetchTodos();
-
+export default function TodoList({ todos }: Props): JSX.Element {
   return (
-    <ul id="todo-list" className="mt-2 h-[300px] overflow-y-auto">
+    <ul
+      id="todo-list"
+      className="mt-2 h-[300px] overflow-y-auto pr-4 [&>*:nth-child(odd)]:bg-gray-100"
+    >
       {todosToRender(todos)}
     </ul>
   );
