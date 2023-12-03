@@ -19,6 +19,7 @@ export const clearTodos = async (): Promise<undefined> => {
   try {
     await dbConnect();
     await TodoSchema.deleteMany({});
+    revalidatePath('/');
   } catch (e) {
     console.error(e);
   }
@@ -29,6 +30,8 @@ export const addTodoFromForm = async (
 ): Promise<undefined> => {
   const title = <string>formData.get('title');
   const dueDate = <string>formData.get('dueDate');
+
+  if (!title || !dueDate) return;
 
   try {
     await addTodo({ title, dueDate, done: false });
@@ -42,6 +45,7 @@ export const removeTodo = async (todoId: string): Promise<undefined> => {
   try {
     await dbConnect();
     await TodoSchema.findByIdAndDelete(todoId);
+    revalidatePath('/');
   } catch (e) {
     console.error(e);
   }
